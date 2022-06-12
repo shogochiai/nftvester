@@ -26,9 +26,11 @@ contract NFTVester is Initializable {
     _;
   }
   function allocate(address recipient, uint totalFtAmount, uint epochStart, uint epocLen, string metadataURI) onlyOwner public {
+    require(ft.allowance(msg.sender,address(this)) >= totalFtAmount, "Allowance is not enough");
     for(uint i; i < epochLen; i++){
       uint currenctEpoch = epochStart+i;
       Epoch storage e = epochs[currenctEpoch];
+      require(!e.isWithdrawn, "This epoch is already in use.");
       e.index = currenctEpoch;
       e.nftId = nft.mintItem(recipient);
       e.ftAmount = totalFtAmount / epochLen;

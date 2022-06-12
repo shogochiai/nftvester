@@ -10,7 +10,7 @@ contract VesterKeyNFT is ERC721 {
   using Counters for Counters.Counter;
   Counters.Counter private _tokenIds;
 
-  constructor(string calldata name, string calldata ticker) public ERC721(name, ticker) {
+  constructor(string memory name, string memory ticker) public ERC721(name, ticker) {
     _setBaseURI("https://ipfs.io/ipfs/");
   }
 

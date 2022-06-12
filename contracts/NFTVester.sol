@@ -32,9 +32,8 @@ contract NFTVester is Initializable {
       Epoch storage e = epochs[currenctEpoch];
       require(!e.isWithdrawn, "This epoch is already in use.");
       e.index = currenctEpoch;
-      e.nftId = nft.mintItem(recipient);
+      e.nftId = nft.mintItem(recipient, metadataURI);
       e.ftAmount = totalFtAmount / epochLen;
-      nft.setTokenURI(metadataURI);
     }
     ft.transferFrom(address(this), totalFtAmount);
   }

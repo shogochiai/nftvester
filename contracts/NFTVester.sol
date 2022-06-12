@@ -43,13 +43,6 @@ contract NFTVester is Initializable {
     require(epochIndex < block.timestamp/(60*60*24*30), "Too early.");
     require(msg.sender == nft.ownerOf(e.nftId), "Not owner");
 
-    uint[] memory _userOwnedTokens = nft.userOwnedTokens(msg.sender);
-    bool senderHasKey;
-    for (uint i; i < _userOwnedTokens.length; i++) {
-      senderHasKey = senderHasKey || e.nftId == _userOwnedTokens[i];
-    }
-    require(senderHasKey, "sender doesn't have the key token of this epochIndex");
-
     e.isWithdrawn = true;
     nft.burn(e.nftId);
     ft.transfer(msg.sender, e.ftAmount);

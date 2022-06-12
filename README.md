@@ -6,7 +6,7 @@
 
 
 ## Japanse explanation
-[tax explanation](./japtax.png)
+![tax explanation](./japtax.png)
 - 以下推論は素人のポエムであることを心得て読まれたい
 - 主な興味深い論点（日本法人について）
   - NFTには期末課税がかからないであろうこと

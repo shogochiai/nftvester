@@ -34,7 +34,4 @@ contract VesterKeyNFT is ERC721 {
 
       return id;
   }
-
-  function 
-
 }

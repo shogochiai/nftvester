@@ -48,4 +48,3 @@ contract NFTVester is Initializable {
     ft.transfer(msg.sender, e.ftAmount);
   }
 }
-}

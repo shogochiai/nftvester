@@ -10,6 +10,9 @@ contract VesterKeyNFT is ERC721 {
   using Counters for Counters.Counter;
   Counters.Counter private _tokenIds;
 
+  mapping(address => uint256[]) public userOwnedTokens;
+  mapping(uint256 => int256) public tokenIsAtIndex;
+
   constructor(string memory name, string memory ticker) public ERC721(name, ticker) {
     _setBaseURI("https://ipfs.io/ipfs/");
   }
@@ -25,7 +28,13 @@ contract VesterKeyNFT is ERC721 {
       _mint(to, id);
       _setTokenURI(id, tokenURI);
 
+      userOwnedTokens[msg.sender].push(id);
+      uint256 arrayLength = userOwnedTokens[msg.sender].length;
+      tokenIsAtIndex[id] = arrayLength;
+
       return id;
   }
+
+  function 
 
 }
